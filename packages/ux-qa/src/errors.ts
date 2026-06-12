@@ -1,6 +1,7 @@
 export class UxQaAssertionError extends Error {
   readonly purpose = "block rendered UX violations before merge";
   readonly reason_code = "UX_QA_VIOLATION";
+  readonly reason = "a deterministic rendered-UX rule failed against the report contract";
   readonly docs_url = "https://github.com/jeppsontaylor/jankurai#rendered-ux-qa";
   readonly owner = "packages/ux-qa";
   readonly retryable = false;
@@ -14,6 +15,8 @@ export class UxQaAssertionError extends Error {
     "repair overlapping or obstructing layout",
     "restore visible focus and accessible form labels"
   ];
+  readonly repair_hint =
+    "open the report receipt named in this error, fix the cited rule for the named route/state, regenerate the artifact, and rerun `npx vitest run`";
 
   constructor(message: string) {
     super(message);

@@ -1,0 +1,81 @@
+# Proof lanes for jankurai-tools-ux. Every lane command runs in this repo alone
+# and its required_artifacts are produced by that command. The lanes mirror the
+# root Justfile and ops/ci/<lane>.sh entrypoints.
+
+[[lane]]
+name = "fast"
+command = "bash scripts/ci-local.sh fast"
+purpose = "build the package, run the UX QA suite, and write the jankurai repo-score"
+command_id = "lane.fast"
+kind = "validation"
+cost = 5
+rules_covered = ["HLT-003-OWNERLESS-PATH", "HLT-004-UNMAPPED-PROOF"]
+required_artifacts = [".jankurai/repo-score.json", ".jankurai/repo-score.md"]
+timeout_seconds = 900
+requires_network = false
+destructive = false
+
+[[lane]]
+name = "web"
+command = "npm --workspace @jankurai/ux-qa run build"
+purpose = "TypeScript build/typecheck for the @jankurai/ux-qa package"
+command_id = "lane.web"
+kind = "validation"
+cost = 6
+rules_covered = ["HLT-007-HANDWRITTEN-CONTRACT"]
+required_artifacts = ["packages/ux-qa/dist/cli.js"]
+timeout_seconds = 900
+requires_network = false
+destructive = false
+
+[[lane]]
+name = "e2e"
+command = "npx vitest run"
+purpose = "run the rendered UX QA spec suite over the deterministic smoke server"
+command_id = "lane.e2e"
+kind = "validation"
+cost = 12
+rules_covered = ["HLT-004-UNMAPPED-PROOF"]
+required_artifacts = []
+timeout_seconds = 1800
+requires_network = false
+destructive = false
+
+[[lane]]
+name = "security"
+command = "bash scripts/ci-local.sh security"
+purpose = "secret scanning (gitleaks) plus dependency scanning (npm audit)"
+command_id = "lane.security"
+kind = "security"
+cost = 8
+rules_covered = ["HLT-009-GENERATED-SECURITY", "HLT-016-SUPPLY-CHAIN-DRIFT"]
+required_artifacts = []
+timeout_seconds = 1200
+requires_network = true
+destructive = false
+
+[[lane]]
+name = "audit"
+command = "bash scripts/ci-local.sh audit"
+purpose = "write .jankurai/repo-score.json and .jankurai/repo-score.md"
+command_id = "lane.audit"
+kind = "audit"
+cost = 10
+rules_covered = ["HLT-001-DEAD-MARKER", "HLT-004-UNMAPPED-PROOF"]
+required_artifacts = [".jankurai/repo-score.json", ".jankurai/repo-score.md"]
+timeout_seconds = 900
+requires_network = false
+destructive = false
+
+[[lane]]
+name = "full"
+command = "bash scripts/ci-local.sh all"
+purpose = "release/merge gate: required, fast, security, and audit lanes"
+command_id = "lane.full"
+kind = "gate"
+cost = 20
+rules_covered = ["HLT-004-UNMAPPED-PROOF", "HLT-016-SUPPLY-CHAIN-DRIFT"]
+required_artifacts = [".jankurai/repo-score.json", ".jankurai/repo-score.md"]
+timeout_seconds = 3600
+requires_network = true
+destructive = false

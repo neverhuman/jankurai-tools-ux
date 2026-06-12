@@ -1,0 +1,29 @@
+# Boundary manifest for jankurai-tools-ux.
+# This is a single-purpose Node + TypeScript workspace: the @jankurai/ux-qa
+# rendered UX QA package. Only the TypeScript domain block applies here; Rust,
+# database, queue, and Python surfaces are not part of this repo.
+# See docs/boundaries.md for prose.
+
+[stack]
+id = "rust-ts-vite-react-postgres-bounded-python"
+version = "0.5.0"
+
+[typescript]
+domain_paths = ["packages/ux-qa/src"]
+forbidden_domain_imports = [
+  "child_process",
+  "node:child_process",
+  "fs/promises:writeFile",
+]
+
+# Agent-friendly exception pattern. The default answer is "follow the standard";
+# an exception is a dated, owned, expiring waiver for a specific rule on a
+# specific path. See docs/exceptions.md. Each entry MUST carry owner,
+# classification, expires, and migration_path.
+[[boundary_exception]]
+path = "packages/ux-qa/src/storybook.ts"
+rule = "generated-contracts-or-public-api-drift-untested"
+classification = "temporary"
+owner = "ux-qa"
+expires = "2026-12-31"
+migration_path = "Move Storybook state ingestion behind the generated UX report contract in schemas/ux-qa.schema.json, then delete this exception."

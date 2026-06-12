@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
+# Required lane: the lightweight gate that must pass on every push.
+# Installs the locked dependency graph, builds the package, and runs the suite.
 set -euo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")/../.."
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
+cd "$REPO_ROOT"
 
-npm ci && npm run build && npm test
+log "required lane: npm ci + build + test"
+npm ci
+npm --workspace @jankurai/ux-qa run build
+npx vitest run

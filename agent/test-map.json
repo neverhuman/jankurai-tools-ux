@@ -1,6 +1,46 @@
 {
   "workspace": "jankurai-tools-ux",
   "tests": {
+    "packages/": {
+      "command": "npx vitest run",
+      "purpose": "run the @jankurai/ux-qa rendered UX QA test suite"
+    },
+    "schemas/": {
+      "command": "npx vitest run",
+      "purpose": "verify the UX QA report and policy JSON Schemas stay valid against the suite"
+    },
+    "tools/": {
+      "command": "npx vitest run",
+      "purpose": "verify the deterministic smoke-server fixture harness used by the suite"
+    },
+    "package.json": {
+      "command": "npm ci",
+      "purpose": "verify the workspace manifest resolves against the locked dependency graph"
+    },
+    "package-lock.json": {
+      "command": "npm ci",
+      "purpose": "verify the locked dependency graph installs and stays consistent"
+    },
+    "Justfile": {
+      "command": "bash scripts/ci-local.sh required",
+      "purpose": "verify the root command surface lanes are runnable"
+    },
+    "VERSION": {
+      "command": "bash scripts/ci-local.sh required",
+      "purpose": "verify the declared package version stays coherent with release metadata"
+    },
+    "CHANGELOG.md": {
+      "command": "bash scripts/ci-local.sh required",
+      "purpose": "verify the changelog tracks released versions"
+    },
+    "README.md": {
+      "command": "bash scripts/ci-local.sh required",
+      "purpose": "verify the root readme routes to the workspace layout"
+    },
+    "LICENSE": {
+      "command": "bash scripts/ci-local.sh required",
+      "purpose": "verify the license file is present and unmodified"
+    },
     "AGENTS.md": {
       "command": "bash scripts/ci-local.sh required",
       "purpose": "verify split-family agent routing remains present"
@@ -8,6 +48,10 @@
     "SPLIT.md": {
       "command": "bash scripts/ci-local.sh required",
       "purpose": "verify split metadata stays coherent"
+    },
+    "docs/": {
+      "command": "bash scripts/ci-local.sh required",
+      "purpose": "verify agent-readable documentation stays present"
     },
     ".jeryu/": {
       "command": "bash scripts/ci-local.sh required",
@@ -25,9 +69,21 @@
       "command": "bash scripts/ci-local.sh required",
       "purpose": "verify local CI and fusion helpers"
     },
+    ".github/": {
+      "command": "bash scripts/ci-local.sh required",
+      "purpose": "verify CI workflow entrypoints stay pinned and thin"
+    },
+    ".gitignore": {
+      "command": "bash scripts/ci-local.sh required",
+      "purpose": "verify the exclusion list keeps transient build paths untracked"
+    },
     ".": {
       "command": "bash scripts/ci-local.sh required",
       "purpose": "required local proof for jankurai-tools-ux"
+    },
+    "contracts/": {
+      "command": "npx vitest run",
+      "purpose": "verify the generated UX QA report contract and client stay consistent with the source schemas"
     }
   }
 }
