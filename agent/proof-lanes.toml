@@ -30,7 +30,7 @@ destructive = false
 
 [[lane]]
 name = "e2e"
-command = "npx vitest run"
+command = "npm --workspace @jankurai/ux-qa run test"
 purpose = "run the rendered UX QA spec suite over the deterministic smoke server"
 command_id = "lane.e2e"
 kind = "validation"

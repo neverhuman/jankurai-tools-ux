@@ -6,10 +6,10 @@ set -euo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 cd "$REPO_ROOT"
 
-log "fast lane: build + vitest + jankurai audit"
+log "fast lane: build + pinned Playwright + jankurai audit"
 npm ci
 npm --workspace @jankurai/ux-qa run build
-npx vitest run
+npm --workspace @jankurai/ux-qa run test
 mkdir -p .jankurai
 jankurai audit . --no-score-history --json .jankurai/repo-score.json --md .jankurai/repo-score.md
 

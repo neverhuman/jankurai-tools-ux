@@ -21,16 +21,15 @@ through `just fast` and `bash scripts/ci-local.sh fast`, which execute the same
 `ops/ci/fast.sh` script CI runs:
 
 ```bash
-npx vitest run            # workspace unit/spec tests (or `npm test` for the
-                          # @jankurai/ux-qa package test script)
+npm --workspace @jankurai/ux-qa run test  # pinned Playwright 1.59.1 suite
 jankurai audit . --no-score-history \
   --json .jankurai/repo-score.json --md .jankurai/repo-score.md   # repo-score
 ```
 
-In this Playwright-backed package, `npm test` resolves to
-`env -u NO_COLOR playwright test`; `npx vitest run` is the equivalent
-deterministic unit runner when present. Either way the fast lane stays
-hermetic and writes the `repo-score` artifacts CI uploads.
+The workspace test command resolves through the committed package and lock files
+to `env -u NO_COLOR playwright test` using Playwright 1.59.1. It does not ask
+`npx` to discover or install a different runner. The fast lane stays hermetic
+and writes the `repo-score` artifacts CI uploads.
 
 ## Rendered UX QA
 

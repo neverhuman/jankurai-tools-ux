@@ -2,15 +2,15 @@
   "workspace": "jankurai-tools-ux",
   "tests": {
     "packages/": {
-      "command": "npx vitest run",
+      "command": "npm --workspace @jankurai/ux-qa run test",
       "purpose": "run the @jankurai/ux-qa rendered UX QA test suite"
     },
     "schemas/": {
-      "command": "npx vitest run",
+      "command": "npm --workspace @jankurai/ux-qa run test",
       "purpose": "verify the UX QA report and policy JSON Schemas stay valid against the suite"
     },
     "tools/": {
-      "command": "npx vitest run",
+      "command": "npm --workspace @jankurai/ux-qa run test",
       "purpose": "verify the deterministic smoke-server fixture harness used by the suite"
     },
     "package.json": {
@@ -82,7 +82,7 @@
       "purpose": "required local proof for jankurai-tools-ux"
     },
     "contracts/": {
-      "command": "npx vitest run",
+      "command": "npm --workspace @jankurai/ux-qa run test",
       "purpose": "verify the generated UX QA report contract and client stay consistent with the source schemas"
     }
   }

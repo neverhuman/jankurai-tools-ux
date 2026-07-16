@@ -16,7 +16,7 @@ export class UxQaAssertionError extends Error {
     "restore visible focus and accessible form labels"
   ];
   readonly repair_hint =
-    "open the report receipt named in this error, fix the cited rule for the named route/state, regenerate the artifact, and rerun `npx vitest run`";
+    "open the report receipt named in this error, fix the cited rule for the named route/state, regenerate the artifact, and rerun `npm --workspace @jankurai/ux-qa run test`";
 
   constructor(message: string) {
     super(message);
