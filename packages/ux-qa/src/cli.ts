@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { mkdir, writeFile } from "node:fs/promises";
+import { realpathSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { pathToFileURL } from "node:url";
 import { chromium } from "playwright";
 import type { Page } from "playwright";
 import { runAccessibilityScan, summarizeAccessibility } from "./accessibility.js";
@@ -382,7 +384,7 @@ async function emitReport(reports: UxQaReport[], out: string | null): Promise<vo
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href) {
   runCli(process.argv.slice(2)).then((code) => {
     process.exitCode = code;
   });
