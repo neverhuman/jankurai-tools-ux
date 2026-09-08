@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { mkdir, writeFile } from "node:fs/promises";
-import { realpathSync } from "node:fs";
+import { readFileSync, realpathSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { chromium } from "playwright";
@@ -45,6 +45,11 @@ const DEFAULT_VIEWPORTS: UxQaViewport[] = [
 ];
 
 export async function runCli(argv: string[]): Promise<number> {
+  if (argv.length === 1 && (argv[0] === "--version" || argv[0] === "-V")) {
+    const { version } = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
+    console.log(`jankurai-ux-qa ${version}`);
+    return 0;
+  }
   const options = await parseArgs(argv);
   const browser = await chromium.launch();
   const reports: UxQaReport[] = [];
