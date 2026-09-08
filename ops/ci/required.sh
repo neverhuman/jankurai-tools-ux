@@ -8,4 +8,5 @@ cd "$REPO_ROOT"
 log "required lane: npm ci + build + test"
 npm ci
 npm --workspace @jankurai/ux-qa run build
-npx vitest run
+npm exec -- playwright install chromium
+npm test
