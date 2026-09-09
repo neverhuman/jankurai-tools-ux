@@ -1,7 +1,7 @@
 # jankurai-tools-ux
 
 <!-- jankurai-badge:start -->
-[![Jankurai score: 88/100](agent/jankurai-badge.svg)](agent/jankurai-badge.json)
+[![Jankurai score: 91/100](agent/jankurai-badge.svg)](agent/jankurai-badge.json)
 <!-- jankurai-badge:end -->
 
 [![jankurai audit](https://img.shields.io/badge/jankurai-audit-passing-brightgreen)](.jankurai/repo-score.md)
