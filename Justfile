@@ -42,8 +42,7 @@ test:
 # Security lane: secret scanning plus dependency vulnerability scanning.
 # gitleaks scans for committed secrets; npm audit checks the npm dependency tree.
 security:
-    gitleaks detect --source . --no-banner --redact
-    npm audit --audit-level=high
+    bash tools/security-lane.sh
 
 # Jankurai self-audit lane: writes the repo-score artifacts that CI uploads.
 audit:
