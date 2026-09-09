@@ -84,6 +84,10 @@
     "contracts/": {
       "command": "npx vitest run",
       "purpose": "verify the generated UX QA report contract and client stay consistent with the source schemas"
+    },
+    ".gitleaksignore": {
+      "command": "bash ops/ci/github-check.sh",
+      "purpose": "scan secrets with exact historical documentation fingerprints"
     }
   }
 }

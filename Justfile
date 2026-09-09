@@ -20,7 +20,7 @@ bootstrap: setup
 # Build the package, run the test suite, and write the jankurai repo-score.
 fast:
     npm --workspace @jankurai/ux-qa run build
-    npx vitest run
+    npm test
     jankurai audit . --no-score-history --json .jankurai/repo-score.json --md .jankurai/repo-score.md
 
 # Run the full local check: format, lint, fast lane, security, and audit.
@@ -37,13 +37,12 @@ lint:
 
 # Run the workspace test suite.
 test:
-    npx vitest run
+    npm test
 
 # Security lane: secret scanning plus dependency vulnerability scanning.
 # gitleaks scans for committed secrets; npm audit checks the npm dependency tree.
 security:
-    gitleaks detect --source . --no-banner --redact
-    npm audit --audit-level=high
+    bash tools/security-lane.sh
 
 # Jankurai self-audit lane: writes the repo-score artifacts that CI uploads.
 audit:

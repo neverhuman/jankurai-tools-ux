@@ -20,6 +20,7 @@
     "tools/": "tools",
     "schemas/": "standard",
     "docs/": "standard",
-    "contracts/": "standard"
+    "contracts/": "standard",
+    ".gitleaksignore": "ops"
   }
 }
