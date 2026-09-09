@@ -1,6 +1,6 @@
 {
-  "report_fingerprint": "sha256:adce1a845d9a21f7ddb797d18f151eb0a1edf603af4847e6faf8baf945c3eab6",
-  "input_fingerprint": "sha256:2c28cb4f086a8a59fbf4884f578822157750b4d4f40efea1f92fab42585edb5f",
+  "report_fingerprint": "sha256:e0833d9a9cd3e8426783d2a7b4611acc4a13efbcddf7f49d4240247725c6fcf0",
+  "input_fingerprint": "sha256:d2320c403eaa15f57e3109746e947b8dc0422f04a74cd9bd9d3c566b0c4322e3",
   "policy_fingerprint": "sha256:44c9969ccd4f7d71f1f2ea9036014e2012c2c039407386ad1419dca44729b78b",
   "manifest_fingerprints": {
     "owner_map": "sha256:e74290f97ef6bc963d7c9fe1754403ba9c6282686d0afe202622c2b2081a99e6",
@@ -10,8 +10,8 @@
     "proof_lanes": "sha256:d1e3bb9f6d2d78366f004329dd413ad476f9418b4b237b828c59688f9fee66cf",
     "standard_version": "sha256:4d91b7142459cb4d421324d7875558d30cd8711eca7e9650955d21aece4feff5"
   },
-  "dirty_worktree": true,
-  "generated_at": "1788918288",
+  "dirty_worktree": false,
+  "generated_at": "1788927813",
   "schema_url": "schemas/repo-score.schema.json",
   "standard": "jankurai",
   "standard_version": "0.9.0",
@@ -21,29 +21,31 @@
   "target_stack_id": "rust-ts-vite-react-postgres-bounded-python",
   "target_stack": "Rust core + TypeScript/React/Vite + PostgreSQL + generated contracts + exception-only Python AI/data service",
   "claimed_conformance_level": "HL3",
-  "observed_conformance_level": "HL3",
-  "conformance_decision": "pass",
-  "conformance_blockers": [],
-  "repo": "/home/ubuntu/jankurai-split/jankurai-tools-ux",
-  "run_id": "1788918288",
-  "started_at": "1788918288",
-  "elapsed_ms": 292,
+  "observed_conformance_level": "HL2",
+  "conformance_decision": "block",
+  "conformance_blockers": [
+    "HLT-002-GENERATED-MUTATION on agent/generated-zones.toml"
+  ],
+  "repo": ".",
+  "run_id": "1788927813",
+  "started_at": "1788927813",
+  "elapsed_ms": 352,
   "scope": {
     "mode": "full",
     "paths": []
   },
-  "score": 88,
-  "raw_score": 88,
+  "score": 91,
+  "raw_score": 91,
   "decision": {
     "status": "advisory",
     "minimum_score": 85,
     "passed": true,
-    "hard_findings": 0,
-    "soft_findings": 4,
+    "hard_findings": 1,
+    "soft_findings": 3,
     "ratchet": {
-      "baseline_score": 88,
+      "baseline_score": 91,
       "allowed_drop": 0,
-      "passed": true,
+      "passed": false,
       "score_delta": 0,
       "baseline_report_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
       "baseline_input_fingerprint": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
@@ -54,14 +56,14 @@
     }
   },
   "git": {
-    "head": "a4f4baa",
+    "head": "2d5e2ea",
     "base": null,
     "changed_files": 0,
     "mode": "full",
-    "dirty_worktree": true
+    "dirty_worktree": false
   },
   "policy": {
-    "path": "/home/ubuntu/jankurai-split/jankurai-tools-ux/agent/audit-policy.toml",
+    "path": "./agent/audit-policy.toml",
     "minimum_score": 85,
     "fail_on": [
       "critical",
@@ -73,7 +75,7 @@
     ],
     "mode": "advisory",
     "standard_version": "0.9.0",
-    "auditor_version": "1.6.11",
+    "auditor_version": "1.7.0",
     "schema_version": "1.9.0",
     "paper_edition": "2026.05-ed8",
     "target_stack": "rust-ts-vite-react-postgres-bounded-python"
@@ -354,9 +356,11 @@
     {
       "name": "Data truth and workflow safety",
       "weight": 8,
-      "score": 50,
-      "weighted_points": 4.0,
-      "evidence": [],
+      "score": 90,
+      "weighted_points": 7.2,
+      "evidence": [
+        "no adopter product DB surface; standards/tooling repo classification is explicit"
+      ],
       "notes": []
     },
     {
@@ -435,6 +439,7 @@
     "missing_categories": [],
     "evidence": {
       "accessibility": [
+        "agent/baselines/main.repo-score.json",
         "package-lock.json",
         "packages/ux-qa/package.json",
         "packages/ux-qa/src/accessibility.ts"
@@ -462,11 +467,11 @@
         "packages/ux-qa/tests/visual-baseline.spec.ts"
       ],
       "storybook": [
+        "agent/baselines/main.repo-score.json",
         "agent/boundaries.toml",
         "package-lock.json",
         "packages/ux-qa/src/cli.ts",
-        "packages/ux-qa/src/config.ts",
-        "packages/ux-qa/src/index.ts"
+        "packages/ux-qa/src/config.ts"
       ],
       "visual_review": []
     }
@@ -979,9 +984,9 @@
   "copy_code": {
     "schema_version": "1.1.0",
     "generated_by": "jankurai copy-code",
-    "generated_at": "2026-09-09T01:44:47.954283501+00:00",
-    "repo": "/home/ubuntu/jankurai-split/jankurai-tools-ux",
-    "auditor_version": "1.6.11",
+    "generated_at": "2026-09-09T04:23:32.827600861+00:00",
+    "repo": ".",
+    "auditor_version": "1.7.0",
     "status": "review",
     "policy": {
       "active_source_only": true,
@@ -1017,7 +1022,7 @@
       ]
     },
     "summary": {
-      "files_scanned": 85,
+      "files_scanned": 89,
       "files_considered": 15,
       "active_files": 15,
       "exact_file_classes": 0,
@@ -1347,25 +1352,26 @@
       "owner": "ops"
     },
     {
-      "severity": "medium",
-      "category": "data",
-      "path": "db/",
-      "problem": "`Data truth and workflow safety` scored 50 below the standard floor of 85",
-      "agent_fix": "move durable truth into migrations, constraints, adapters, and application-owned transactions",
+      "severity": "high",
+      "category": "generated",
+      "path": "agent/generated-zones.toml",
+      "problem": "generated zone file `packages/ux-qa/dist/` is missing",
+      "agent_fix": "regenerate `packages/ux-qa/dist/` using the declared command, or remove the zone entry if the file was deleted intentionally",
       "evidence": [
-        "Data truth and workflow safety scored 50"
+        "generated zone integrity violation"
       ],
-      "check_id": "HLT-006-DIRECT-DB-WRONG-LAYER:data",
-      "hardness": "soft",
-      "confidence": 0.76,
-      "evidence_kind": "sql",
+      "check_id": "HLT-002-GENERATED-MUTATION:generated",
+      "hardness": "hard",
+      "confidence": 0.95,
+      "evidence_kind": "contract-manifest",
       "rerun_command": "just fast",
-      "fingerprint": "sha256:6dc277f838aa42b508c136f6ba666d602ecefe226bc4c238b24388640ee21f82",
-      "rule_id": "HLT-006-DIRECT-DB-WRONG-LAYER",
+      "fingerprint": "sha256:3dde8e8480c9181807f50a15be3e45ed1e675125cb16ff8d24561e579f2bd6e2",
+      "rule_id": "HLT-002-GENERATED-MUTATION",
       "tlr": "Contracts/data",
-      "lane": "db",
-      "docs_url": "docs/audit-rubric.md#required-shape",
-      "owner": "tools"
+      "lane": "contract",
+      "docs_url": "agent/JANKURAI_STANDARD.md#generated-zones",
+      "owner": "agent",
+      "line": 1
     },
     {
       "severity": "medium",
@@ -1417,14 +1423,14 @@
   ],
   "agent_fix_queue": [
     {
-      "path": "db/",
-      "priority": "medium",
-      "rule_id": "HLT-006-DIRECT-DB-WRONG-LAYER",
+      "path": "agent/generated-zones.toml",
+      "priority": "high",
+      "rule_id": "HLT-002-GENERATED-MUTATION",
       "tlr": "Contracts/data",
-      "lane": "db",
-      "owner": "tools",
-      "task": "move durable truth into migrations, constraints, adapters, and application-owned transactions",
-      "why": "`Data truth and workflow safety` scored 50 below the standard floor of 85"
+      "lane": "contract",
+      "owner": "agent",
+      "task": "regenerate `packages/ux-qa/dist/` using the declared command, or remove the zone entry if the file was deleted intentionally",
+      "why": "generated zone file `packages/ux-qa/dist/` is missing"
     },
     {
       "path": "Justfile",
